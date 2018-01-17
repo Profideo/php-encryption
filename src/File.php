@@ -323,12 +323,12 @@ final class File
      */
     private static function encryptResourceInternal($inputHandle, $outputHandle, KeyOrPassword $secret)
     {
-        if (! \is_resource($inputHandle)) {
+        if (! is_resource($inputHandle)) {
             throw new Ex\IOException(
                 'Input handle must be a resource!'
             );
         }
-        if (! \is_resource($outputHandle)) {
+        if (! is_resource($outputHandle)) {
             throw new Ex\IOException(
                 'Output handle must be a resource!'
             );
@@ -348,7 +348,7 @@ final class File
         /* Initialize a streaming HMAC state. */
         /** @var resource $hmac */
         $hmac = \hash_init(Core::HASH_FUNCTION_NAME, HASH_HMAC, $akey);
-        if (!\is_resource($hmac) && !\is_object($hmac)) {
+        if (!is_resource($hmac) && !is_object($hmac)) {
             throw new Ex\EnvironmentIsBrokenException(
                 'Cannot initialize a hash context'
             );
@@ -444,12 +444,12 @@ final class File
      */
     public static function decryptResourceInternal($inputHandle, $outputHandle, KeyOrPassword $secret)
     {
-        if (! \is_resource($inputHandle)) {
+        if (! is_resource($inputHandle)) {
             throw new Ex\IOException(
                 'Input handle must be a resource!'
             );
         }
-        if (! \is_resource($outputHandle)) {
+        if (! is_resource($outputHandle)) {
             throw new Ex\IOException(
                 'Output handle must be a resource!'
             );
@@ -518,7 +518,7 @@ final class File
         /* Initialize a streaming HMAC state. */
         /** @var resource $hmac */
         $hmac = \hash_init(Core::HASH_FUNCTION_NAME, HASH_HMAC, $akey);
-        if (!\is_resource($hmac) && !\is_object($hmac)) {
+        if (!is_resource($hmac) && !is_object($hmac)) {
             throw new Ex\EnvironmentIsBrokenException(
                 'Cannot initialize a hash context'
             );
@@ -576,7 +576,7 @@ final class File
             /* Remember this buffer-sized chunk's HMAC. */
             /** @var resource $chunk_mac */
             $chunk_mac = \hash_copy($hmac);
-            if (!\is_resource($chunk_mac) && !\is_object($chunk_mac)) {
+            if (!is_resource($chunk_mac) && !is_object($chunk_mac)) {
                 throw new Ex\EnvironmentIsBrokenException(
                     'Cannot duplicate a hash context'
                 );
@@ -634,7 +634,7 @@ final class File
             \hash_update($hmac2, $read);
             /** @var resource $calc_mac */
             $calc_mac = \hash_copy($hmac2);
-            if (!\is_resource($calc_mac) && !\is_object($calc_mac)) {
+            if (!is_resource($calc_mac) && !is_object($calc_mac)) {
                 throw new Ex\EnvironmentIsBrokenException(
                     'Cannot duplicate a hash context'
                 );
